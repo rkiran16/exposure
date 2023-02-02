@@ -1,0 +1,21 @@
+.exposure_container {
+  background: $dark;
+
+  .user_info,
+  .btn-container {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: 0.75;
+    }
+
+    .user_info,
+    .btn-container {
+      display: flex;
+    }
+  }
+}
