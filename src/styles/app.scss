@@ -1,6 +1,16 @@
 @import "bootstrap/scss/bootstrap.scss";
 @import "../components/Exposure/style.scss";
 
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $indigo-700,
+  "light": $light,
+  "dark": $dark
+);
 
 html,
 body {

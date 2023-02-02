@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import moment from 'moment';
 import unsplash from '../../service';
 import UserInfo from "../../components/UserInfo";
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../../store/cartSlice";
 import RelatedCollection from '../../components/RelatedCollection';
 
 export const ProductDetails = () => {
-  let { productId } = useParams();
+  const { productId } = useParams();
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch()
 
   useEffect(() => {
     unsplash.photos.get({ photoId: productId }).then(result => {
@@ -53,7 +56,7 @@ export const ProductDetails = () => {
         <div className='border px-3 mb-3'>
           {variations.map((variation, index) => (
             <div key={`${index}${variation}`} className={`form-check py-3 ${index !== 2 ? 'border-bottom' : undefined}`}>
-              <input className="form-check-input" type="radio" name="priceRadios" id={`price${variation}`} checked={index === 0 ? true : false} value={variation} />
+              <input className="form-check-input" type="radio" name="priceRadios" id={`price${variation}`} checked value={variation} />
               <label className="form-check-label w-100" for={`price${variation}`}>
                 <div className='d-flex justify-content-between'>
                   <span className='text-uppercase'>{variation}</span>
@@ -63,7 +66,7 @@ export const ProductDetails = () => {
             </div>
           ))}
         </div>
-        <button type='button' className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-danger'>
+        <button type='button' onClick={() => dispatch(addToCart(product))} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-danger'>
           <i className="fa-solid fa-bag-shopping me-4"></i>
           Add To Bag
         </button>
