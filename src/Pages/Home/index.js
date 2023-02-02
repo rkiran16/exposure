@@ -28,7 +28,7 @@ export const Home = () => {
   return (
     <>
       <div className="position-relative">
-        <img src={heroImg} className="w-100 vh-100" style={{ objectFit: "cover" }} alt="" />
+        <img src={heroImg} className="w-100 vh-100 object-fit-cover" alt="" />
         <SearchBox />
         <div className="position-absolute bottom-0 start-50 translate-middle-x mb-5">
           <a href="#productList"><i class="fa-solid  fa-circle-chevron-down fs-1 text-danger mb-5"></i></a>
