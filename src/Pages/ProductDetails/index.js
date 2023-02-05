@@ -11,7 +11,8 @@ import RelatedCollection from '../../components/RelatedCollection';
 export const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
-  const dispatch = useDispatch()
+  const [size, setSize] = useState("small");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     unsplash.photos.get({ photoId: productId }).then(result => {
@@ -21,7 +22,6 @@ export const ProductDetails = () => {
       } else {
         // handle success here
         const photo = result.response;
-        console.log(photo);
         setProduct(photo);
       }
     });
@@ -47,6 +47,17 @@ export const ProductDetails = () => {
     )
   }
 
+  const onRadioChangeHandler = e => {
+    setSize(e.currentTarget.value);
+  }
+
+  const addToCartHandler = () => {
+    const { id, alt_description, urls, promoted_at, user } = product;
+    dispatch(addToCart({
+      id, alt_description, urls, promoted_at, user, size
+    }))
+  }
+
 
   const PriceContainer = () => {
     const variations = ["small", "medium", "large"];
@@ -56,17 +67,18 @@ export const ProductDetails = () => {
         <div className='border px-3 mb-3'>
           {variations.map((variation, index) => (
             <div key={`${index}${variation}`} className={`form-check py-3 ${index !== 2 ? 'border-bottom' : undefined}`}>
-              <input className="form-check-input" type="radio" name="priceRadios" id={`price${variation}`} checked value={variation} />
+              <input className="form-check-input" onChange={onRadioChangeHandler} type="radio" name="priceRadios"
+                id={`price${variation}`} checked={variation === size} value={size} />
               <label className="form-check-label w-100" for={`price${variation}`}>
                 <div className='d-flex justify-content-between'>
                   <span className='text-uppercase'>{variation}</span>
-                  <span className='fw-bold'>$99.99</span>
+                  <span className='fw-bold'>$9.99</span>
                 </div>
               </label>
             </div>
           ))}
         </div>
-        <button type='button' onClick={() => dispatch(addToCart(product))} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-danger'>
+        <button type='button' onClick={addToCartHandler} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-danger'>
           <i className="fa-solid fa-bag-shopping me-4"></i>
           Add To Bag
         </button>
@@ -104,7 +116,7 @@ export const ProductDetails = () => {
                   <p className='mb-2 me-3 fs-6 text-black'><i className="fa-sharp me-3 fa-solid fs-5 fa-thumbs-up"></i><span>Likes : </span>{likes}</p>
                   <p className='mb-2 me-3 fs-6 text-black'><i className="fa-solid me-3 fs-5 fa-ruler-combined"></i><span>Dimensions : </span>{width} x {height}</p>
                 </div>
-                {exif && <div className='mt-4'>
+                {exif && exif.name && <div className='mt-4'>
                   <p className='mb-2 me-3 fs-6 text-black'><i class="fa-solid me-3 fs-4 fa-camera"></i>Shot With : {exif?.name}</p>
                 </div>}
               </div>

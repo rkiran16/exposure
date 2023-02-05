@@ -42,9 +42,9 @@ export const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="cart">
                   <div className="d-flex flex-row flex-lg-column align-items-center position-relative">
-                    <i class="fa-solid fs-5 fa-cart-shopping me-lg-2"></i>
+                    <i class="fa-solid fs-5 animate__animated animate__bounceIn animate__repeat-2 fa-cart-shopping me-lg-2"></i>
                     <span>Cart</span>
-                    {cart.length > 0 && <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cart.length > 0 && <span class="position-absolute  top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {cart.length}
                       <span class="visually-hidden">unread messages</span>
                     </span>}

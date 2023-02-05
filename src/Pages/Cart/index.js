@@ -1,26 +1,55 @@
 import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+import moment from "moment";
+import UserInfo from '../../components/UserInfo';
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
-
   return (
     <div className='container my-5'>
-      {cart.map((item) => (
-        <div class="card mb-3">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src={item?.urls?.full} class="img-thumbnail rounded-start" style={{ maxHeight: '200px' }} alt="..." />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <h1 className='my-4'>Shopping Cart</h1>
+      <div className='row'>
+        <div className='col-12 col-md-8'>
+          {cart.map((item) => (
+            <div className="card mb-3 animate__animated animate__fadeInLeft">
+              <div className="row g-0">
+                <div className="col-md-2">
+                  <img src={item?.urls?.full} className="img-thumbnail rounded-start" style={{ maxHeight: '200px' }} alt={item?.alt_description} />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title text-capitalize">{item?.alt_description}</h5>
+                    <p className="card-text"><small className="text-muted">{`Published : ${moment(item?.promoted_at).format("MMM Do YYYY")}`}</small></p>
+                    <UserInfo userImg={item?.user?.profile_image?.medium} name={item?.user?.name} />
+
+                  </div>
+                </div>
+                <div className='col-md-2'>
+                  <div className='d-flex align-items-center justify-content-end py-2 px-3'>
+                    <p className='fs-4 fw-bold'>$9.99</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+        {cart && cart.length > 0 && <div className='col-12 col-md-4'>
+          <div className='bg-light border p-3 animate__animated animate__slideInDown'>
+            <>
+              <div className='d-flex align-items-center justify-content-center mb-4'>
+                <span className='fs-5'>{`Subtotal (${cart.length} items):`}</span>
+                <span className='ms-3 fs-5 fw-bold'>{`$${(cart.length) * 9.99}`}</span>
+              </div>
+              <Link to="/checkout" className='btn btn-danger mb-4 w-100'>
+                Proceed to Checkout
+              </Link>
+            </>
+            <Link to="/" className='btn btn btn-outline-secondary w-100'>
+              Continue Shopping
+            </Link>
+          </div>
+        </div>}
+      </div>
     </div>
   )
 }
