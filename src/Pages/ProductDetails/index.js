@@ -81,7 +81,7 @@ export const ProductDetails = () => {
             </div>
           ))}
         </div>
-        {isProduct_in_cart ? <Link to="/cart" className='btn btn-outline-secondary w-100'>View Cart</Link> : <button type='button' onClick={addToCartHandler} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-warning'>
+        {isProduct_in_cart ? <Link to="/cart" className='btn btn-lg btn-outline-secondary w-100'>View Cart</Link> : <button type='button' onClick={addToCartHandler} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-warning'>
           <i className="fa-solid fa-bag-shopping me-4"></i>
           Add To Bag
         </button>}
