@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
 import useSearch from "../../hooks/useSearch";
 import ProductMasonry from "../../components/ProductMasonry";
+import { SearchBox } from "../../components/SearchBox";
 
 
 const SearchPage = () => {
@@ -31,6 +32,7 @@ const SearchPage = () => {
 
   return (
     <div className="d-flex flex-column justify-content-center">
+      <SearchBox />
       <ProductMasonry data={list} />
       {loading && <p>Loading...</p>}
       {error && <p>Error!</p>}

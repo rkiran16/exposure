@@ -28,13 +28,15 @@ export const Home = () => {
   return (
     <>
       <div className="position-relative">
-        <img src={heroImg} className="w-100 vh-100 object-fit-cover" alt="" />
-        <SearchBox />
+        <img src={heroImg} className="w-100 vh-100 object-fit-cover" alt="Hero Image" />
+        <div className="position-absolute top-50 start-50 translate-middle w-75">
+          <SearchBox />
+        </div>
         <div className="position-absolute bottom-0 start-50 translate-middle-x mb-5">
           <a href="#productList"><i class="fa-solid  fa-circle-chevron-down fs-1 text-danger mb-5"></i></a>
         </div>
       </div>
-      <div id="productList" className="container my-4">
+      <div id="productList" className="my-4">
         <ProductList />
       </div>
     </>

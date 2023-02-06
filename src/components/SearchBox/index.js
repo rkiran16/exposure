@@ -8,11 +8,14 @@ export const SearchBox = () => {
   }
 
   return (
-    <form className="position-absolute top-50 start-50 translate-middle w-75">
+    <>
       <div className="input-group">
         <input type="text" className="form-control" onChange={changeHandler} value={searchText} placeholder="Search Photos..." aria-label="Search Books" aria-describedby="button-addon2" />
-        <Link className={`btn btn-lg btn-warning ${searchText.length === 0 ? 'pe-none' : ''}`} to={`/search/${searchText}`} type="button" id="button-addon2">Search</Link>
+        <Link className={`btn btn-lg btn-warning rounded-0 ${searchText.length === 0 ? 'pe-none' : ''}`} to={`/search/${searchText}`} type="button" id="button-addon2">
+          <i class="fa-solid fa-magnifying-glass me-3"></i>
+          Search
+        </Link>
       </div>
-    </form>
+    </>
   )
 }
