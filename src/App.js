@@ -11,7 +11,6 @@ import {
 import User from "./Pages/User";
 import SearchPage from "./Pages/SearchPage";
 import Error from "./Pages/Error";
-import Checkout from "./Pages/Checkout";
 
 
 const router = createBrowserRouter([
@@ -34,10 +33,6 @@ const router = createBrowserRouter([
       {
         path: 'orders',
         element: <Orders />
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />
       },
       {
         path: 'user/:userName',

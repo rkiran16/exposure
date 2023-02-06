@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import moment from "moment";
 import UserInfo from '../../components/UserInfo';
+import StripeCheckoutBtn from '../../components/StripeCheckoutBtn';
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -14,7 +15,7 @@ export const Cart = () => {
             <div className="card mb-3 animate__animated animate__fadeInLeft">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <img src={item?.urls?.full} className="img-thumbnail rounded-start" style={{ maxHeight: '200px' }} alt={item?.alt_description} />
+                  <img src={item?.urls?.full} className="img-fluid object-fit-cover" style={{ height: '200px' }} alt={item?.alt_description} />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -40,9 +41,7 @@ export const Cart = () => {
                 <span className='fs-5'>{`Subtotal (${cart.length} items):`}</span>
                 <span className='ms-3 fs-5 fw-bold'>{`$${(cart.length) * 9.99}`}</span>
               </div>
-              <Link to="/checkout" className='btn btn-danger mb-4 w-100'>
-                Proceed to Checkout
-              </Link>
+              <StripeCheckoutBtn price={(cart.length) * 9.99} />
             </>
             <Link to="/" className='btn btn btn-outline-secondary w-100'>
               Continue Shopping

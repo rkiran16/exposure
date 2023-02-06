@@ -23,7 +23,7 @@ const User = () => {
   }, [userName])
   const { name, profile_image, bio, location, tags, social } = user;
   return (
-    <div className='border-bottom'>
+    <div className='border-bottom border-dark'>
       <div className='container my-4'>
         <div className='d-flex flex-column flex-md-row align-items-start'>
           <div className='p-3 border rounded-circle d-inline-block'>

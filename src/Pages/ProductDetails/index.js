@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import moment from 'moment';
 import unsplash from '../../service';
 import UserInfo from "../../components/UserInfo";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from "../../store/cartSlice";
 import RelatedCollection from '../../components/RelatedCollection';
 
@@ -13,6 +13,9 @@ export const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [size, setSize] = useState("small");
   const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+
+  const isProduct_in_cart = cart.length > 0 && cart.find(product => product.id === productId)
 
   useEffect(() => {
     unsplash.photos.get({ photoId: productId }).then(result => {
@@ -78,10 +81,10 @@ export const ProductDetails = () => {
             </div>
           ))}
         </div>
-        <button type='button' onClick={addToCartHandler} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-danger'>
+        {isProduct_in_cart ? <Link to="/cart" className='btn btn-outline-secondary w-100'>View Cart</Link> : <button type='button' onClick={addToCartHandler} className='btn btn-lg d-flex align-items-center text-uppercase w-100 justify-content-center btn-warning'>
           <i className="fa-solid fa-bag-shopping me-4"></i>
           Add To Bag
-        </button>
+        </button>}
       </div>
     )
   }
