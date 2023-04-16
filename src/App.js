@@ -1,57 +1,57 @@
-import { Home } from "./Pages/Home";
-import { ProductDetails } from "./Pages/ProductDetails";
-import { Cart } from "./Pages/Cart";
-import { Orders } from "./Pages/Orders";
-import { Header } from "./components/Header";
+import { Home } from './pages/Home';
+import { ProductDetails } from './pages/ProductDetails';
+import { Cart } from './pages/Cart';
+import { Orders } from './pages/Orders';
+import { Header } from './components/Header';
 import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
-} from "react-router-dom";
-import User from "./Pages/User";
-import SearchPage from "./Pages/SearchPage";
-import Error from "./Pages/Error";
-
+} from 'react-router-dom';
+import User from './pages/User';
+import SearchPage from './pages/SearchPage';
+import Error from './pages/Error';
 
 const router = createBrowserRouter([
   {
-    element: <><Header /><Outlet /></>,
+    element: (
+      <>
+        <Header />
+        <Outlet />
+      </>
+    ),
     errorElement: <Error />,
     children: [
       {
-        path: "/",
-        element: <Home />
+        path: '/',
+        element: <Home />,
       },
       {
-        path: "pdp/:productId",
-        element: <ProductDetails />
+        path: 'pdp/:productId',
+        element: <ProductDetails />,
       },
       {
         path: 'cart',
-        element: <Cart />
+        element: <Cart />,
       },
       {
         path: 'orders',
-        element: <Orders />
+        element: <Orders />,
       },
       {
         path: 'user/:userName',
-        element: <User />
+        element: <User />,
       },
       {
         path: 'search/:query',
-        element: <SearchPage />
-      }
-    ]
-  }
+        element: <SearchPage />,
+      },
+    ],
+  },
 ]);
 
 function App() {
-  return (
-    <RouterProvider router={router}>
-
-    </RouterProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
