@@ -7,7 +7,7 @@ export const Header = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <div className="fixed-top">
+    <div className="position-sticky">
       <nav className="navbar border-bottom bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
