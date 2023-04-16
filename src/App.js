@@ -1,16 +1,16 @@
-import { Home } from './pages/Home';
-import { ProductDetails } from './pages/ProductDetails';
-import { Cart } from './pages/Cart';
-import { Orders } from './pages/Orders';
+import { Home } from './Pages/Home';
+import { ProductDetails } from './Pages/ProductDetails';
+import { Cart } from './Pages/Cart';
+import { Orders } from './Pages/Orders';
 import { Header } from './components/Header';
 import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
 } from 'react-router-dom';
-import User from './pages/User';
-import SearchPage from './pages/SearchPage';
-import Error from './pages/Error';
+import User from './Pages/User';
+import SearchPage from './Pages/SearchPage';
+import Error from './Pages/Error';
 
 const router = createBrowserRouter([
   {
