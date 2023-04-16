@@ -11,7 +11,7 @@ export const Header = () => {
       <nav className="navbar border-bottom bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center animate__animated animate__slideInLeft">
               <img
                 src={Logo}
                 className="img-fluid me-3"
@@ -26,7 +26,7 @@ export const Header = () => {
             <ul className="navbar-nav flex-row justify-content-end flex-grow-1 pe-3">
               <li className="nav-item me-3">
                 <Link
-                  className="nav-link active"
+                  className="nav-link active animate__animated animate__slideInRight"
                   aria-current="page"
                   to="/"
                 >
@@ -37,7 +37,10 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="nav-item me-3">
-                <Link className="nav-link" to="orders">
+                <Link
+                  className="nav-link animate__animated animate__slideInRight"
+                  to="orders"
+                >
                   <div className="d-flex flex-column align-items-center">
                     <i class="fa-regular mb-1 fs-5 fa-rectangle-list"></i>
                     <span>Orders</span>
@@ -45,7 +48,10 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="cart">
+                <Link
+                  className="nav-link animate__animated animate__slideInRight"
+                  to="cart"
+                >
                   <div className="d-flex flex-column align-items-center position-relative">
                     <i class="fa-solid fs-5 animate__animated animate__bounceIn animate__repeat-2 fa-cart-shopping mb-1"></i>
                     <span>Cart</span>

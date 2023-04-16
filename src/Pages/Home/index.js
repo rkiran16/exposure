@@ -33,14 +33,18 @@ export const Home = () => {
           className="w-100 vh-100 object-fit-cover"
           alt="Hero"
         />
-        <div className="d-flex w-auto flex-column animate__animated animate__bounce position-absolute top-50 start-50 translate-middle align-items-center justify-content-start">
-          <h6 className="h2 mb-4">SELLING PHOTOS</h6>
-          <h1 className="display-4 fw-bold mb-4">
-            Make Cash With Your Camera
-          </h1>
+        <div className="d-flex w-auto flex-column  position-absolute top-50 start-50 translate-middle align-items-center justify-content-start">
+          <div className="hero-content">
+            <h6 className="h2 mb-4 animate__animated animate__slideInDown">
+              SELLING PHOTOS
+            </h6>
+            <h1 className="display-4 fw-bold mb-4 animate__animated animate__slideInDown">
+              Make Cash With Your Camera
+            </h1>
+          </div>
           <a
             href="#productList"
-            className="btn btn-lg w-50  btn-danger"
+            className="btn btn-lg w-50  btn-danger animate__animated animate__slideInDown"
           >
             EXPLORE MORE
           </a>
