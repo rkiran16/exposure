@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Home } from './Pages/Home';
 import { ProductDetails } from './Pages/ProductDetails';
 import { Cart } from './Pages/Cart';
